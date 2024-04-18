@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
+    background-color: #ffffff;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+header {
+    z-index: 100;
+    background-color: white;
+    border-bottom: 2px solid rgba(0, 0, 51, 0.1);
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #000055;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 66.666667%;
+    background: #f2f2f5;
+}
+
+.cart-item-count {
+    position: absolute;
+    right: -12px;
+    background-color: #e5e5eb;
+    font-weight: bold;
+    color: #000033;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.image-container {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.website-tagline {
+    font-family: "Libre Franklin", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.section-title {
+    font-family: "Libre Franklin", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.card {
+    transition: all ease-in-out 150ms;
+    background: rgba(204, 204, 255, 0.2);
+}
+
+.card:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+.product-info {
+    color: #000033;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+}
+
+footer {
+    background-color: white;
+    border-top: 2px solid rgba(0, 0, 51, 0.1);
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.5px;
+    color: #000055;
+}
+
+.pagination-btn {
+    background-color: #ccccff;
+    color: #000033;
+    font-weight: 500;
+    border-radius: 0.375rem;
+}
+
+.login-header,
+.login-message,
+.page-header-title {
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.inventory-update {
+    font-family: "Raleway", sans-serif;
+}
+
+.account {
+    min-height: 440px;
+    max-height: 440px;
+}
+
+.account-btn {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: left;
+}
+
+#profile-tab,
+#address-tab,
+#order-tab {
+    font-family: "Montserrat", sans-serif;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 150;
+    height: 33%;
+    margin: auto;
+    background-color: white;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    text-align: center;
+    font-family: "Libre Franklin", sans-serif;
+}
+
+.modal > div {
+    height: 100%;
+    width: 100%;
+}
+
+.backdrop {
+    min-height: 100%;
+    min-width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000038;
+    position: fixed;
+    z-index: 110;
+}
+
+.address-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 150;
+    margin: auto;
+    background-color: white;
+    border-radius: 0.5rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+    html,
+    body,
+    #root {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .account {
+        min-height: 0;
+        max-height: none;
+    }
+}
