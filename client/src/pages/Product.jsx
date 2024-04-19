@@ -7,7 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { authService } from "../api/auth";
 import { setCartData } from "../store/auth/authSlice";
-import { Button, LazyImage } from "../components/import";
+import { Button } from "../components/import";
 import { BarLoader } from "react-spinners";
 
 // Component to pass in attributes of another components
@@ -143,7 +143,11 @@ const Product = () => {
                         className="text-center"
                         width={true}>
                         {images?.map(({ image, _id }) => (
-                            <LazyImage alt={`${apiUrl}/${image}`} key={_id} />
+                            <img
+                                src={`${apiUrl}/${image}`}
+                                className="w-full"
+                                key={_id}
+                            />
                         ))}
                     </Carousel>
                 </div>
