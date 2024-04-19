@@ -62,7 +62,9 @@ const App = () => {
     }, [orderPageNumber, status]);
 
     return loading ? (
-        <BarLoader className="mx-auto my-auto" height={8} width={200} />
+        <div className="h-full flex">
+            <BarLoader className="mx-auto my-auto" height={8} width={200} />
+        </div>
     ) : (
         <>
             {window.location.pathname.includes("status") ? null : <Header />}
