@@ -398,6 +398,7 @@ const updateAddress = async (req, res, next) => {
         const addressBody = req.body;
         const addressValidationResult = await validateAddressObject({
             ...addressBody,
+            action: "UPDATE",
         });
 
         if (addressValidationResult.error)

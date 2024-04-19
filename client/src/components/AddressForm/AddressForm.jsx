@@ -161,18 +161,20 @@ const AddressForm = ({
                     required={true}
                 />
             </div>
-            <div className="flex flex-col m-2">
-                <label htmlFor="isDefault">Set as default address</label>
-                <select
-                    id="isDefault"
-                    name="isDefault"
-                    value={isDefault}
-                    onChange={(e) => setIsDefault(e.target.value)}
-                    className="border rounded-md px-2 py-2 focus:outline-[#808080]">
-                    <option value={true}>Yes</option>
-                    <option value={false}>No</option>
-                </select>
-            </div>
+            {!addressId && (
+                <div className="flex flex-col m-2">
+                    <label htmlFor="isDefault">Set as default address</label>
+                    <select
+                        id="isDefault"
+                        name="isDefault"
+                        value={isDefault}
+                        onChange={(e) => setIsDefault(e.target.value)}
+                        className="border rounded-md px-2 py-2 focus:outline-[#808080]">
+                        <option value={true}>Yes</option>
+                        <option value={false}>No</option>
+                    </select>
+                </div>
+            )}
             <div className="flex md:my-4 mx-auto">
                 <div className="mx-auto">
                     <Button

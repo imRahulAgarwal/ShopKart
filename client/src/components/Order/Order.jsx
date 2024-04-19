@@ -23,27 +23,27 @@ const Order = () => {
 
     return (
         <div
-            className={`grid grid-cols-12 max-md:mx-2 h-full ${
+            className={`grid grid-cols-12 max-md:mx-2 ${
                 !orders.length && "h-full"
             }`}
             id="order-tab">
-            <div className="col-span-12">
-                {orders.length ? (
-                    <div className="mx-5 mt-4 text-center">
-                        <Button
-                            label={"Previous"}
-                            onClick={() => dispatch(increaseOrderPageNo())}
-                        />
-                        <span className="">
-                            {page} of {totalPage}
-                        </span>
-                        <Button
-                            label={"Next"}
-                            onClick={() => dispatch(decreaseOrderPageNo())}
-                        />
-                    </div>
-                ) : null}
-                {orders.length ? (
+            {orders.length ? (
+                <div className="col-span-12">
+                    {orders.length ? (
+                        <div className="mx-5 mt-4 text-center">
+                            <Button
+                                label={"Previous"}
+                                onClick={() => dispatch(increaseOrderPageNo())}
+                            />
+                            <span className="">
+                                {page} of {totalPage}
+                            </span>
+                            <Button
+                                label={"Next"}
+                                onClick={() => dispatch(decreaseOrderPageNo())}
+                            />
+                        </div>
+                    ) : null}
                     <div className="md:m-5 grid grid-cols-12 overflow-y-auto md:border">
                         {orders.map((order) => (
                             <Link
@@ -87,8 +87,8 @@ const Order = () => {
                             </Link>
                         ))}
                     </div>
-                ) : null}
-            </div>
+                </div>
+            ) : null}
             {!orders.length && (
                 <div className="col-span-12 mx-auto my-auto flex flex-col">
                     <p className="md:text-2xl text-xl text-center">

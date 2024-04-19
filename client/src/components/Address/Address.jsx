@@ -84,7 +84,11 @@ const Address = () => {
     return (
         <>
             {(confirmModalOpen || formOpen) && <div className="backdrop" />}
-            <div id="address-tab" className="grid grid-cols-12 h-full">
+            <div
+                id="address-tab"
+                className={`grid grid-cols-12 ${
+                    !addresses.length ? "h-full" : ""
+                }`}>
                 {addresses.length ? (
                     <div className="col-span-12 text-end mx-5 mt-5">
                         <Button
