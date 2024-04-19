@@ -1,28 +1,19 @@
-import React, { useState } from "react";
-import { Button, Card, Container } from "../components/import";
+import React from "react";
+import { Button, Card, Container, LazyImage } from "../components/import";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-    const [imageLoading, setImageLoading] = useState(false);
     const { products } = useSelector((state) => state.product);
 
     return (
         <>
             <div className="relative">
                 <div className="image-container w-full max-h-screen">
-                    {!imageLoading && (
-                        <img className="w-full max-h-screen object-cover" />
-                    )}
-                    <img
+                    <LazyImage
                         src="hero-banner.png"
                         alt="Hero Banner"
-                        className="w-full max-h-screen object-cover"
-                        style={{
-                            opacity: imageLoading ? 1 : 0,
-                            transition: "opacity 0.5s ease-in-out",
-                        }}
-                        onLoad={() => setImageLoading(true)}
+                        imgClasses={"max-h-screen"}
                     />
                     <div className="overlay flex flex-col text-white">
                         <div className="mx-auto my-auto flex flex-col">
