@@ -10,7 +10,7 @@ const listCustomers = async (req, res, next) => {
 
         if (search) query.name = { $regex: search, $options: "i" };
 
-        const customers = await User.find(query, { password: 0, resetPasswordToken: 0 })
+        const customers = await User.find(query, { password: 0, resetPasswordToken: 0, isAdmin:0 })
             .sort({ name: 1 })
             .skip(((page ? page : 1) - 1) * (limit ? limit : PAGE_LIMIT))
             .limit(limit ? limit : PAGE_LIMIT);
