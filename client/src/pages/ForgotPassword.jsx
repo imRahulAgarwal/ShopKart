@@ -2,20 +2,27 @@ import React, { useState } from "react";
 import { authService } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../components/import";
+import { BarLoader } from "react-spinners";
 
 const ForgotPassword = () => {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const result = await authService.forgotPassword(email);
         setEmail("");
+        setLoading(false);
         if (result) navigate("/login");
     };
 
-    return (
+    return loading ? (
+        <div className="h-full flex">
+            <BarLoader width={200} height={8} className="mx-auto my-auto" />
+        </div>
+    ) : (
         <div className="mx-auto my-auto border border-[#00000035] shadow-xl rounded-md p-5 md:min-w-96">
             <h1 className="page-header-title md:text-3xl text-xl">
                 Forgot Password

@@ -8,6 +8,7 @@ import { Carousel } from "react-responsive-carousel";
 import { authService } from "../api/auth";
 import { setCartData } from "../store/auth/authSlice";
 import { Button } from "../components/import";
+import { BarLoader } from "react-spinners";
 
 // Component to pass in attributes of another components
 const BuyNow = () => (
@@ -127,7 +128,9 @@ const Product = () => {
     }, []);
 
     return loading ? (
-        <span>Loading...</span>
+        <div className="h-full flex">
+            <BarLoader height={8} width={200} className="mx-auto my-auto" />
+        </div>
     ) : (
         <div className="px-5 mb-10 text-[#000033]">
             <p className="text-center md:text-4xl text-lg section-title my-4">

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Card, Container } from "../components/import";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-    const [loading, setLoading] = useState(true);
     const { products } = useSelector((state) => state.product);
 
     return (
