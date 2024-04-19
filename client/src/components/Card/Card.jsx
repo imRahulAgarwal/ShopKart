@@ -13,15 +13,15 @@ const Card = ({ product = {} }) => {
                 <img
                     src={`${apiUrl}/${product?.images}`}
                     alt={product?.name}
-                    className="rounded-t-lg"
+                    className="rounded-t-lg border-b border-[#00000035]"
                 />
-                <div className="w-full px-3 my-2">
-                    <div className="flex my-1">
+                <div className="w-full p-3">
+                    <div className="flex">
                         <p className="product-info">{product?.name}</p>
                         <span>&nbsp;-&nbsp;</span>
                         <p className="product-info">{product?.brand}</p>
                     </div>
-                    <p className="my-1">
+                    <p>
                         <span className="product-info">Starting from </span>
                         <span className="font-semibold">
                             {formatter.format(product?.startingPrice)}

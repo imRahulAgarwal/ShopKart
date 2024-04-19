@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Container } from "../components/import";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+    const [imageLoading, setImageLoading] = useState(false);
     const { products } = useSelector((state) => state.product);
 
     return (
         <>
             <div className="relative">
                 <div className="image-container w-full max-h-screen">
+                    {!imageLoading && (
+                        <img className="w-full max-h-screen object-cover" />
+                    )}
                     <img
                         src="hero-banner.png"
                         alt="Hero Banner"
-                        className="w-full max-h-screen"
+                        className="w-full max-h-screen object-cover"
+                        style={{
+                            opacity: imageLoading ? 1 : 0,
+                            transition: "opacity 0.5s ease-in-out",
+                        }}
+                        onLoad={() => setImageLoading(true)}
                     />
                     <div className="overlay flex flex-col text-white">
                         <div className="mx-auto my-auto flex flex-col">
@@ -44,7 +53,10 @@ const Home = () => {
                             )
                         ) : (
                             <div className="flex col-span-12 rounded-sm my-auto border border-[#00000035] text-center h-20">
-                                <p className="mx-auto my-auto text-[#000033] inventory-update md:text-2xl text-lg">Looks like our inventory is updating. Stay tuned!</p>
+                                <p className="mx-auto my-auto text-[#000033] inventory-update md:text-2xl text-lg">
+                                    Looks like our inventory is updating. Stay
+                                    tuned!
+                                </p>
                             </div>
                         )}
                     </div>
