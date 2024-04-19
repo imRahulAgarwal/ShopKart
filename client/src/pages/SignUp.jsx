@@ -4,8 +4,10 @@ import { authService } from "../api/auth";
 import { Input } from "../components/import";
 import { useDispatch } from "react-redux";
 import { login } from "../store/auth/authSlice";
+import { BarLoader } from "react-spinners";
 
 const SignUp = () => {
+    const [loading, setLoading] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [number, setNumber] = useState("");
@@ -16,19 +18,46 @@ const SignUp = () => {
     const dispatch = useDispatch();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const result = await authService.register(
-            name,
-            email,
-            number,
-            password
-        );
-        if (result) {
-            dispatch(login(result));
-            navigate("/");
-        } else setPassword("");
+        setLoading(true);
+        setTimeout(async () => {
+            const result = await authService.register(
+                name,
+                email,
+                number,
+                password
+            );
+            setLoading(false);
+            if (result) {
+                dispatch(login(result));
+                navigate("/");
+            } else setPassword("");
+        }, 1000);
     };
 
-    return (
+    const handleNumberChange = (e) => {
+        const inputValue = e.target.value;
+
+        const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight"];
+
+        if (allowedKeys.includes(e.nativeEvent.key)) {
+            setNumber(inputValue);
+            return;
+        }
+
+        // Validate input: only allow digits and up to 10 characters
+        // Check if the input value consists only of digits
+        const isValid = /^\d*$/.test(inputValue);
+
+        if (isValid && inputValue.length <= 10) {
+            setNumber(inputValue);
+        }
+    };
+
+    return loading ? (
+        <div className="h-full flex">
+            <BarLoader width={200} height={8} className="mx-auto my-auto" />
+        </div>
+    ) : (
         <div className="mx-auto my-10 border border-[#00000035] shadow-xl rounded-md p-5 md:min-w-96">
             <h1 className="page-header-title md:text-3xl text-xl">SignUp</h1>
             <form onSubmit={handleSubmit} className="flex flex-col">
@@ -53,14 +82,14 @@ const SignUp = () => {
                     handleChange={(e) => setEmail(e.target.value)}
                 />
                 <Input
-                    label="Number"
+                    label="Mobile Number"
                     type="text"
                     id="number"
                     value={number}
                     required={true}
-                    placeholder="Your number"
+                    placeholder="Your mobile number"
                     inputClass="focus:!outline-none"
-                    handleChange={(e) => setNumber(e.target.value)}
+                    handleChange={handleNumberChange}
                 />
 
                 <div className="flex flex-col m-2">

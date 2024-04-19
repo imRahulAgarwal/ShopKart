@@ -200,6 +200,14 @@ footer {
     font-family: "Montserrat", sans-serif;
 }
 
+.carousel .thumb {
+    border: 0px !important;
+}
+
+.carousel .thumb.selected {
+    border: 2px solid #000000 !important;
+}
+
 @media screen and (max-width: 768px) {
     html,
     body,
